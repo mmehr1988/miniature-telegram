@@ -1,0 +1,260 @@
+/* -------------------------------------------------------------------------------------- */
+/* CSS VARIABLE */
+/* -------------------------------------------------------------------------------------- */
+
+:root {
+  --nav-background: #000000;
+  --btn-nav-background: #f2b400;
+  --btn-nav-border: #e2b13c;
+  --btn-nav-shadow: #feca1d;
+  --btn-nav-hover: #daa520;
+
+  --body-color: #3aafa9;
+  --btn-start-background: #ff5bb0;
+  --btn-start-border: 1px solid #ee1eb5;
+  --btn-start-shadow: inset 0px 1px 3px 0px #fbafe3;
+  --btn-start-hover: #ef027d;
+}
+
+/* -------------------------------------------------------------------------------------- */
+/* BASIC SETUP */
+/* -------------------------------------------------------------------------------------- */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background-color: var(--body-color);
+  font-family: 'Suez One', serif;
+  font-size: 16px;
+  -ms-scroll-chaining: none;
+  overscroll-behavior: none;
+}
+
+/* -------------------------------------------------------------------------------------- */
+/* REUASBLE ITEMS */
+/* -------------------------------------------------------------------------------------- */
+
+.hidden {
+  display: none;
+}
+
+/* -------------------------------------------------------------------------------------- */
+/* HEADERS */
+/* -------------------------------------------------------------------------------------- */
+
+h1 {
+  font-size: 240%;
+  text-align: center;
+}
+
+h2 {
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 180%;
+}
+
+/* -------------------------------------------------------------------------------------- */
+/* BUTTONS */
+/* -------------------------------------------------------------------------------------- */
+
+button {
+  color: #ffffff;
+  display: block;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-family: inherit;
+  padding: 1.3rem;
+  border-radius: 5px;
+}
+
+button:focus {
+  outline: none;
+}
+
+/* INTRO BUTTONS ------------------------------------------------*/
+.intro-container button {
+  width: 100%;
+  background-color: var(--btn-start-background);
+  border: var(--btn-start-border);
+  box-shadow: var(--btn-start-shadow);
+}
+
+.intro-container button:hover {
+  background-color: var(--btn-start-hover);
+}
+
+/* REMAINING BUTTONS ---------------------------------------------*/
+
+.nav button,
+.section-questions button,
+.section-highscore button,
+.section-initials button,
+.section-gameover button {
+  background-color: var(--btn-nav-background);
+  border: 1px solid var(--btn-nav-border);
+  box-shadow: inset 0px 1px 3px 0px var(--btn-nav-shadow);
+}
+
+.nav button:hover,
+.section-questions button:hover,
+.section-highscore button:hover,
+.section-initials button:hover,
+.section-gameover button:hover {
+  background-color: var(--btn-nav-hover);
+}
+
+.section-questions button,
+.section-highscore button {
+  width: 100%;
+  margin: 0.7rem 0;
+}
+
+.section-questions button {
+  text-align: left;
+}
+
+.section-highscore button {
+  text-align: center;
+}
+
+/* -------------------------------------------------------------------------------------- */
+/* HEADER */
+/* -------------------------------------------------------------------------------------- */
+
+.nav {
+  position: fixed;
+  background-color: var(--nav-background);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.nav .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav h2 {
+  border-radius: 50%;
+  background-color: var(--btn-nav-background);
+  border: 1px solid var(--btn-nav-border);
+  box-shadow: inset 0px 0px 20px 9px var(--btn-nav-shadow);
+  font-size: 180%;
+  width: 80px;
+  height: 80px;
+  line-height: 58px;
+  text-align: center;
+}
+
+/* -------------------------------------------------------------------------------------- */
+/* SECTION | INTRO */
+/* -------------------------------------------------------------------------------------- */
+
+.master-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.intro-list ul {
+  padding: 2rem;
+}
+
+.intro-list ul li {
+  padding: 0.2rem;
+  font-size: 120%;
+}
+
+/* -------------------------------------------------------------------------------------- */
+/* SECTION | INITIALS */
+/* -------------------------------------------------------------------------------------- */
+
+.section-initials button {
+  height: 2rem;
+  width: 8rem;
+  margin-left: 10px;
+  padding: 0;
+}
+
+.initials-container h2 {
+  font-size: 240%;
+}
+
+.initials-container p {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 140%;
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+}
+
+label {
+  font-size: 120%;
+}
+
+input {
+  border-radius: 5px;
+  height: 2rem;
+  font-size: 120%;
+}
+
+/* -------------------------------------------------------------------------------------- */
+/* SECTION | HIGH SCORES */
+/* -------------------------------------------------------------------------------------- */
+
+.score-container {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+}
+
+.score-container h2 {
+  text-align: left;
+  font-size: 240%;
+}
+
+.score-container li {
+  margin-bottom: 10px;
+  font-size: 140%;
+  margin-left: 30px;
+}
+
+.submit-score-button {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.submit-score-button button {
+  margin-right: 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+/* -------------------------------------------------------------------------------------- */
+/* SECTION | GAME OVER */
+/* -------------------------------------------------------------------------------------- */
+
+.gameover-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.gameover-container p {
+  font-size: 300%;
+}
