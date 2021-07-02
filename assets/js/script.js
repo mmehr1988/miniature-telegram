@@ -8,20 +8,10 @@ var cTime = 75;
 var qCount = 0;
 var score = 0;
 
-// -------------------------------------------------------
-// VARIABLES DISPLAYED IN THE SEQUENCE OF EVENTS OCCURING
-// -------------------------------------------------------
-
+// Function to make writing variables a little cleaner
 var queryElement = (element) => {
   return document.querySelector(element);
 };
-
-// VARIABLES | SECTION = QUESTIONS
-var secQuestion = queryElement('.section-questions');
-var questionEl = queryElement('.quizDataQuestion');
-var btnAnswer = document.querySelectorAll('.answer');
-
-var wrongCorrect = queryElement('.wrong-correct');
 
 // VARIABLES | SECTION = INTRO
 var secIntro = queryElement('.section-intro');
@@ -29,11 +19,17 @@ var btnStartQuiz = queryElement('.start-quiz');
 var navTime = queryElement('.nav-time');
 var btnHighscore = queryElement('.nav-highscore');
 
+// VARIABLES | SECTION = QUESTIONS
+var secQuestion = queryElement('.section-questions');
+var questionEl = queryElement('.quizDataQuestion');
+var btnAnswer = document.querySelectorAll('.answer');
+var wrongCorrect = queryElement('.wrong-correct');
+
 // VARIABLES | SECTION = INITIALS
 var secInitials = queryElement('.section-initials');
 var btnSubmit = queryElement('.submit-score');
 var initialsInput = queryElement('#initials-text');
-var initialsInput = queryElement('#initials-text');
+var finalScore = queryElement('.finalScore');
 
 // VARIABLES | SECTION = HIGHSCORES
 var secHighscores = queryElement('.section-highscore');
@@ -93,8 +89,6 @@ let showWrongCorrect = () => {
     wrongCorrect.innerHTML = '';
   }, 1000);
 };
-
-var finalScore = queryElement('.finalScore');
 
 // listens to each click of the answer buttons and questions change accordingly
 for (let i = 0; i < btnAnswer.length; i++) {

@@ -263,4 +263,5 @@ input {
 
 .gameover-container p {
   font-size: 300%;
+  text-transform: uppercase;
 }
