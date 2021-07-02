@@ -1,274 +1,229 @@
 'use strict';
 
-// ---------------------------------------------------------------------------------------
-// VARIABLES
-// ---------------------------------------------------------------------------------------
+// -------------------------------------------------------
+// GAME SETTINGS
+// -------------------------------------------------------
 
-// SECTION = NAV
-var btnHighscore = document.getElementById('highscore');
+var cTime = 75;
+var qCount = 0;
+var score = 0;
 
-// SECTION = INTRO
+// -------------------------------------------------------
+// VARIABLES DISPLAYED IN THE SEQUENCE OF EVENTS OCCURING
+// -------------------------------------------------------
 
-var sectionIntro = document.querySelector('.section-intro');
-var startEl = document.getElementById('start-quiz');
+var queryElement = (element) => {
+  return document.querySelector(element);
+};
 
-// TIMER
-var timerEl = document.getElementById('countdown');
+// VARIABLES | SECTION = QUESTIONS
+var secQuestion = queryElement('.section-questions');
+var questionEl = queryElement('.quizDataQuestion');
+var btnAnswer = document.querySelectorAll('.answer');
 
-// SECTION = QUESTIONS + ANSWERS
-var sectionQuestions = document.querySelector('.section-questions');
-var quizQuestionEl = document.querySelector('.question');
-var showWrongCorrect = document.querySelector('.wrong-correct');
+var wrongCorrect = queryElement('.wrong-correct');
 
-// SECTION = INITIALS
+// VARIABLES | SECTION = INTRO
+var secIntro = queryElement('.section-intro');
+var btnStartQuiz = queryElement('.start-quiz');
+var navTime = queryElement('.nav-time');
+var btnHighscore = queryElement('.nav-highscore');
 
-var sectionInitials = document.querySelector('.section-initials');
-var scoreCountSpan = document.querySelector('#score-count');
-var scoreForm = document.querySelector('#score-form');
-var initialsInput = document.querySelector('#initials-text');
-var btnSubmitScore = document.getElementById('submit-score');
+// VARIABLES | SECTION = INITIALS
+var secInitials = queryElement('.section-initials');
+var btnSubmit = queryElement('.submit-score');
+var initialsInput = queryElement('#initials-text');
+var initialsInput = queryElement('#initials-text');
 
-// SECTION = HIGHSCORES
+// VARIABLES | SECTION = HIGHSCORES
+var secHighscores = queryElement('.section-highscore');
+var highscoreList = queryElement('.highscore-list');
+var btnClearScore = queryElement('.clear-score');
+var btnGoBack = queryElement('.go-back');
 
-var sectionHighscore = document.querySelector('.section-highscore');
-var scoreList = document.querySelector('#score-list');
-var btnClearScore = document.getElementById('clear-score');
-var btnGoBack = document.getElementById('go-back');
+// VARIABLES | SECTION = GAMEOVER
+var secGameOver = queryElement('.section-gameover');
+var btnGameOver = queryElement('.game-over');
 
-// SECTION = GAME OVER
-var sectionGameOver = document.querySelector('.section-gameover');
-var btnGameOver = document.getElementById('game-over');
+// -------------------------------------------------------
+// TO START QUIZ
+// -------------------------------------------------------
 
-// ---------------------------------------------------------------------------------------
-// QUESTION
-// ---------------------------------------------------------------------------------------
-
-const quizData = [
-  {
-    question: 'Inside which HTML element do we put the JavaScript?',
-    a: '<javascript>',
-    b: '<script>',
-    c: '<js>',
-    d: '<scripting>',
-    correct: 'b',
-  },
-  {
-    question: 'Where is the correct place to insert a JavaScript?',
-    a: '<body>',
-    b: '<head>',
-    c: '<main>',
-    d: 'both <body> and <head>',
-    correct: 'd',
-  },
-  {
-    question: 'How do you write "Hello World" in an alert box?',
-    a: 'alert("Hellow World")',
-    b: 'alertBox("Hellow World")',
-    c: 'masgBox("Hellow World")',
-    d: 'masg("Hellow World")',
-    correct: 'a',
-  },
-  {
-    question: 'What year was JavaScript launched?',
-    a: '1996',
-    b: '1995',
-    c: '1994',
-    d: 'none of the above',
-    correct: 'b',
-  },
-  {
-    question: 'How can you add a comment in a JavaScript?',
-    a: '/This is a comment',
-    b: '//This is a comment',
-    c: '<!--This is a comment-->',
-    d: 'none of the above',
-    correct: 'b',
-  },
-];
-
-// ---------------------------------------------------------------------------------------
-// RELOAD
-// ---------------------------------------------------------------------------------------
-
-var questionCount = 0;
-var timeLeft = 75;
-
-// ---------------------------------------------------------------------------------------
-// FUNCTION | TIMER
-// ---------------------------------------------------------------------------------------
-
-startEl.addEventListener('click', function (event) {
-  var element = event.target;
-  if (element.matches('button') === true) {
-    sectionIntro.classList.toggle('hidden');
-    sectionQuestions.classList.toggle('hidden');
-    setQuestion(questionCount);
-    countdown();
-  }
+let timeTicker;
+btnStartQuiz.addEventListener('click', () => {
+  secIntro.classList.add('hidden');
+  secQuestion.classList.remove('hidden');
+  setQuestion(qCount);
+  timeTicker = setInterval(countdown, 1000);
+  init();
 });
 
+// -------------------------------------------------------
+// KEEP TRACK OF TIME SO LONG AS TIME > 0
+//-------------------------------------------------------
+
 function countdown() {
-  var timeInterval = setInterval(function () {
-    if (timeLeft > 1 && questionCount === quizData.length) {
-      clearInterval(timeInterval);
-      sectionQuestions.classList.add('hidden');
-      sectionInitials.classList.remove('hidden');
-      highscoreList();
-      scoreCountSpan.textContent = `Your final score is: ${timeLeft + 1}`;
-    } else if (timeLeft > 1) {
-      timerEl.textContent = timeLeft;
-      timeLeft--;
-    } else if (timeLeft === 1) {
-      timerEl.textContent = timeLeft;
-      timeLeft--;
-    } else {
-      timerEl.textContent = 75;
-      clearInterval(timeInterval);
-      sectionQuestions.classList.add('hidden');
-      sectionGameOver.classList.remove('hidden');
-    }
-  }, 1000);
+  if (cTime > 0) {
+    cTime--;
+    navTime.textContent = cTime;
+  } else {
+    clearInterval(timeTicker);
+    secQuestion.classList.add('hidden');
+    secGameOver.classList.remove('hidden');
+  }
 }
 
-// ---------------------------------------------------------------------------------------
-// FUNCTION | QUESTIONS + CHECK
-// ---------------------------------------------------------------------------------------
+// -------------------------------------------------------
+// QUIZ DATA PULL BASED ON BUTTON CLICK
+// -------------------------------------------------------
 
-// SETTING THE QUIZ DATA QUESTION & CHOICES
 function setQuestion(id) {
   if (id < quizData.length) {
-    quizQuestionEl.textContent = quizData[id].question;
+    questionEl.textContent = quizData[id].question;
     btnAnswer[0].textContent = quizData[id].a;
     btnAnswer[1].textContent = quizData[id].b;
     btnAnswer[2].textContent = quizData[id].c;
     btnAnswer[3].textContent = quizData[id].d;
   }
 }
+// -------------------------------------------------------
 
-var btnAnswer = document.querySelectorAll('.answer');
+let showWrongCorrect = () => {
+  setTimeout(function () {
+    wrongCorrect.innerHTML = '';
+  }, 1000);
+};
 
-// This function loops through the answer buttons and retrieves their assigned value
-for (let i = 0; i < btnAnswer.length; i++)
-  btnAnswer[i].addEventListener('click', function () {
-    if (questionCount < quizData.length) {
-      if (quizData[questionCount].correct === btnAnswer[i].value) {
-        showWrongCorrect.textContent = 'Correct';
-        questionCount++;
-        setQuestion(questionCount);
+var finalScore = queryElement('.finalScore');
+
+// listens to each click of the answer buttons and questions change accordingly
+for (let i = 0; i < btnAnswer.length; i++) {
+  btnAnswer[i].addEventListener('click', () => {
+    if (qCount < quizData.length - 1) {
+      if (quizData[qCount].correct === btnAnswer[i].value) {
+        wrongCorrect.innerHTML = 'Correct';
+        showWrongCorrect();
+        qCount++;
+        setQuestion(qCount);
       } else {
-        showWrongCorrect.textContent = 'Wrong';
-        timeLeft = timeLeft - 20;
-        questionCount++;
-        setQuestion(questionCount);
+        wrongCorrect.innerHTML = 'Wrong';
+        cTime = cTime - 20;
+        showWrongCorrect();
+        qCount++;
+        setQuestion(qCount);
       }
+    } else {
+      clearInterval(timeTicker);
+      secQuestion.classList.add('hidden');
+      secInitials.classList.remove('hidden');
+      navTime.textContent = cTime;
+      score = cTime;
+      finalScore.textContent = score;
     }
-    setTimeout(function () {
-      showWrongCorrect.textContent = '';
-    }, 500);
   });
+}
 
-// ---------------------------------------------------------------------------------------
-// SECTION | HIGH SCORES
-// ---------------------------------------------------------------------------------------
+// -------------------------------------------------------
+// HIGHSCORES + LOCAL STORAGE
+// -------------------------------------------------------
 
-var highscores = [];
+var highscoresArray = [];
 
 function renderHighscores() {
-  // Clear todoList element and update todoCountSpan
-  scoreList.innerHTML = '';
-  scoreCountSpan.textContent = highscores.length;
+  highscoreList.innerHTML = '';
 
-  // Render a new li for each todo
-  for (var i = 0; i < highscores.length; i++) {
-    var score = highscores[i];
-
+  // Loop to create a new li for each highscore submitted
+  for (var i = 0; i < highscoresArray.length; i++) {
     var li = document.createElement('li');
-    li.textContent = score;
+    // Used turnery operator to display within text when appending li. This drove me crazy a little
+    li.textContent = `${highscoresArray[i].initialsText}: ${highscoresArray[i].score}`;
     li.setAttribute('data-index', i);
 
-    scoreList.appendChild(li);
+    highscoreList.appendChild(li);
   }
 }
+// Load highscores from local storage
+function init() {
+  var storedHighscores = JSON.parse(localStorage.getItem('highscoresArray'));
 
-// FUNCTION TO LOAD HIGHSCORES
-function highscoreList() {
-  var storedScores = JSON.parse(localStorage.getItem('highscores'));
-
-  if (storedScores !== null) {
-    highscores = storedScores;
+  if (storedHighscores !== null) {
+    highscoresArray = storedHighscores;
   }
-
   renderHighscores();
 }
-
+// To store to local storage
 function storeHighscores() {
-  localStorage.setItem('highscores', JSON.stringify(highscores));
+  localStorage.setItem('highscoresArray', JSON.stringify(highscoresArray));
 }
 
-// SUBMIT SCORE | CLICK EVENT
-btnSubmitScore.addEventListener('click', function (event) {
-  event.preventDefault();
+// -------------------------------------------------------
+// FOR SUBMITTING HIGHSCORES
+// -------------------------------------------------------
 
-  sectionInitials.classList.toggle('hidden');
-  sectionHighscore.classList.toggle('hidden');
-
+btnSubmit.addEventListener('click', () => {
   var initialsText = initialsInput.value.trim();
 
   if (initialsText === '') {
-    return;
-  }
+    return '';
+  } else {
+    highscoresArray.push({
+      initialsText: initialsText,
+      score: score,
+    });
 
-  highscores.push(`${initialsText}: ${timeLeft + 1}`);
+    // For sorting the values in local storage
+    highscoresArray = highscoresArray.sort((a, b) => {
+      if (a.score < b.score) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
 
-  initialsInput.value = '';
-
-  storeHighscores();
-  renderHighscores();
-});
-
-// CLEAR SCORES | CLICK EVENT
-
-btnClearScore.addEventListener('click', function (event) {
-  var element = event.target;
-  if (element.matches('button') === true) {
-    scoreCountSpan.textContent = 0;
-    scoreList.innerHTML = '';
-    localStorage.clear();
-  }
-});
-
-// GO BACK | CLICK EVENT
-btnGoBack.addEventListener('click', function (event) {
-  var element = event.target;
-  if (element.matches('button') === true) {
-    reload();
+    secInitials.classList.add('hidden');
+    secHighscores.classList.remove('hidden');
+    initialsInput.value = '';
+    storeHighscores();
+    renderHighscores();
   }
 });
 
-// HIGHSCORE | CLICK EVENT
+// -------------------------------------------------------
+// QUIZ APP MAIN BUTTONS | CLICK EVENT
+// -------------------------------------------------------
 
-btnHighscore.addEventListener('click', function (event) {
-  var element = event.target;
-
-  if (element.matches('button') === true && sectionHighscore.classList.contains('hidden')) {
-    sectionIntro.classList.add('hidden');
-    sectionQuestions.classList.add('hidden');
-    sectionInitials.classList.add('hidden');
-    sectionHighscore.classList.remove('hidden');
-    sectionGameOver.classList.add('hidden');
-    highscoreList();
+// HIGH SCORE BUTTON | CLICK EVENT
+btnHighscore.addEventListener('click', () => {
+  if (secHighscores.classList.contains('hidden')) {
+    secIntro.classList.add('hidden');
+    secQuestion.classList.add('hidden');
+    secInitials.classList.add('hidden');
+    secHighscores.classList.remove('hidden');
+    secGameOver.classList.add('hidden');
+    init();
   }
 });
 
-// GAMEOVER | CLICK EVENT
-btnGameOver.addEventListener('click', function (event) {
-  var element = event.target;
-  if (element.matches('button') === true) {
-    reload();
-  }
+// CLEAR SCORES BUTTON | CLICK EVENT
+btnClearScore.addEventListener('click', () => {
+  clearInterval(timeTicker);
+  highscoreList.innerHTML = '';
+  localStorage.clear();
 });
 
-// RELOAD GAME | CLICK EVENT
+// GO BACK BUTTON | CLICK EVENT
+btnGoBack.addEventListener('click', () => {
+  reload();
+});
+
+// GAMEOVER BUTTON | CLICK EVENT
+btnGameOver.addEventListener('click', () => {
+  reload();
+});
+
+// -------------------------------------------------------
+// RELOAD GAME FUNCTION
+// -------------------------------------------------------
 
 const reload = function () {
   location.reload();

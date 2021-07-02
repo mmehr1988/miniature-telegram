@@ -39,6 +39,11 @@ body {
 /* REUASBLE ITEMS */
 /* -------------------------------------------------------------------------------------- */
 
+.row {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .hidden {
   display: none;
 }
@@ -143,7 +148,7 @@ button:focus {
   align-items: center;
 }
 
-.nav h2 {
+.nav p {
   border-radius: 50%;
   background-color: var(--btn-nav-background);
   border: 1px solid var(--btn-nav-border);
@@ -151,7 +156,7 @@ button:focus {
   font-size: 180%;
   width: 80px;
   height: 80px;
-  line-height: 58px;
+  line-height: 70px;
   text-align: center;
 }
 
@@ -235,12 +240,12 @@ input {
   margin-left: 30px;
 }
 
-.submit-score-button {
+.highscore-buttons {
   display: flex;
   justify-content: flex-start;
 }
 
-.submit-score-button button {
+.highscore-buttons button {
   margin-right: 10px;
   width: -webkit-fit-content;
   width: -moz-fit-content;

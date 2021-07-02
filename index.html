@@ -4,28 +4,29 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Suez+One&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Coding Quiz</title>
+    <title>Code Quiz</title>
   </head>
   <body>
     <!----------------------------- HEADER + NAVIGATION ------------------------------>
     <header>
       <nav class="nav">
         <div class="row">
-          <button id="highscore" type="button" class="btn-highscore">High Scores</button>
-          <h2 id="countdown">75</h2>
+          <button class="nav-highscore">High Scores</button>
+          <div>
+            <p><span class="nav-time">75</span></p>
+          </div>
         </div>
       </nav>
     </header>
 
     <main>
-      <div class="master-container" id="master">
+      <div class="master-container">
         <!-------------------------------------------------------------------------------->
         <!-- INTRO ----------------------------------------------------------------------->
         <!-------------------------------------------------------------------------------->
+
         <section class="section-intro">
           <h1>Welcome To My Code Quiz</h1>
           <div class="intro-container">
@@ -40,71 +41,77 @@
                 <li>When game is over, enter initials for highscore list</li>
               </ul>
             </div>
-            <div class="intro-button">
-              <button id="start-quiz" type="button">Start Quiz</button>
+            <div>
+              <button class="start-quiz">Start Quiz</button>
             </div>
           </div>
         </section>
 
         <!-------------------------------------------------------------------------------->
-        <!-- QUESTIONS ------------------------------------------------------------------->
+        <!-- SECTION: QUESTIONS -->
         <!-------------------------------------------------------------------------------->
 
         <section class="section-questions hidden">
-          <h2 class="question"></h2>
+          <!-- Using ID as there is only 1 question each round -->
+          <h2 class="quizDataQuestion"></h2>
+          <!-- Using class as there are more than 1 answer -->
           <button class="answer" value="a">a</button>
           <button class="answer" value="b">b</button>
           <button class="answer" value="c">c</button>
           <button class="answer" value="d">d</button>
-          <div class="wrong-correct"></div>
+          <p class="wrong-correct"></p>
         </section>
 
         <!-------------------------------------------------------------------------------->
-        <!-- SUBMIT ---------------------------------------------------------------------->
+        <!-- SECTION: INITIALS -->
         <!-------------------------------------------------------------------------------->
+
         <section class="section-initials hidden">
           <div class="initials-container">
             <h2>All Done!</h2>
-            <p><span id="score-count"></span></p>
+            <p>Your final score is: <span class="finalScore"></span></p>
             <div class="input-box">
-              <form id="score-form" method="POST">
-                <label for="score-text">Enter Initials: </label>
+              <form id="initials-form" method="POST">
+                <label for="initials-text">Enter Initials: </label>
                 <input type="text" placeholder="" name="initials-text" id="initials-text" />
               </form>
-              <button id="submit-score" type="button">Submit</button>
+              <button class="submit-score" type="button">Submit</button>
             </div>
           </div>
         </section>
         <!-------------------------------------------------------------------------------->
-        <!-- HIGHSCORES ------------------------------------------------------------------>
+        <!-- SECTION: HIGHSCORES -->
         <!-------------------------------------------------------------------------------->
 
         <section class="section-highscore hidden">
           <div class="score-container">
             <h2>Highscores</h2>
             <div>
-              <ul id="score-list"></ul>
+              <ul class="highscore-list"></ul>
             </div>
-            <div class="submit-score-button">
-              <button id="go-back" type="button">Go Back</button>
-              <button id="clear-score" type="button">Clear Scores</button>
+            <div class="highscore-buttons">
+              <button class="go-back" type="button">Go Back</button>
+              <button class="clear-score" type="button">Clear Scores</button>
             </div>
           </div>
         </section>
 
         <!-------------------------------------------------------------------------------->
-        <!-- HIGHSCORES ------------------------------------------------------------------>
+        <!-- GAME OVER ------------------------------------------------------------------>
         <!-------------------------------------------------------------------------------->
 
         <section class="section-gameover hidden">
           <div class="gameover-container">
             <p>GAME OVER</p>
-            <button id="game-over" type="button">Play Again</button>
+            <button class="game-over" type="button">Play Again</button>
           </div>
         </section>
       </div>
     </main>
 
+    <!-- SCRIPTS ------------------------------------------------------------------>
+
+    <script src="./assets/js/questions.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
