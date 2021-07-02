@@ -10,7 +10,7 @@ To be honest, I had no idea what Web API’s were until this assignment. The ter
 
 API stands for Application Programming Interface. To understand the purpose of APIs see the below example from MDN Web Docs.
 
-“>” think about the electricity supply in your house, apartment, or other dwellings. If you want to use an appliance in your house, you plug it into a plug socket and it works. You don't try to wire it directly into the power supply — to do so would be really inefficient and, if you are not an electrician, difficult and dangerous to attempt.
+> "think about the electricity supply in your house, apartment, or other dwellings. If you want to use an appliance in your house, you plug it into a plug socket and it works. You don't try to wire it directly into the power supply — to do so would be really inefficient and, if you are not an electrician, difficult and dangerous to attempt."
 
 There are two types of Web APIs: Browser APIs and Third-Party APIs. For this assignment, we used browser API’s in combination with Javascript to create this app.
 
@@ -71,14 +71,21 @@ When git clone, you will find the following:
 1. File: Index.html
 2. File: README.md
 3. Folder: Assets
-   a) Folder: css
-    style.css
-   b) Folder: js
-    script.js
-    questions.js: created a separate js file for the quiz questions as it made for writing the main code easier.
+
+   a. Folder: css
+
+   - style.css
+
+   b. Folder: js
+
+   - script.js
+   - questions.js: created a separate js file for the quiz questions as it made for writing the main code easier.
+
 4. Folder: Vendors
-   a) Folder: css
-    normalize.css
+
+   a. Folder: css
+
+   - normalize.css
 
 ### Design App
 
@@ -100,6 +107,7 @@ I probably spent more time on the design than I should have, but at the end, I t
    b. `<nav>`
    i. `<button>` - For the highscore click events in js
    ii. `<p>` & `<span>` - For the clock/timer
+
 2. Main Body Section
    a. `<section>` - 5 sections used to separate
    i. Intro
@@ -123,23 +131,30 @@ I probably spent more time on the design than I should have, but at the end, I t
 2. Logic of Code
 
 - Start Quiz Button + Click Event
-  I. Added a click event for the Start Quiz button. This click event also housed the function to:
-   start the question loading process by calling on the setQuestion() function.
-   Start the countdown by calling on countdown() which reduces the initial 75secs clock by 1 second.
-   Load highscores from local storage by calling on `init()`. The purpose of this `init()` is to load the highscores since my “Go Back” button utilizes the javascript `location.reload()`.
+  a. Added a click event for the Start Quiz button. This click event also housed the function to:
+
+  i. Start the question loading process by calling on the setQuestion() function.
+
+  ii. Start the countdown by calling on countdown() which reduces the initial 75secs clock by 1 second.
+
+  iii. Load highscores from local storage by calling on `init()`. The purpose of this `init()` is to load the highscores since my “Go Back” button utilizes the javascript `location.reload()`.
 
 - The Timer / Clock functionality is a function called countdown(). It’s simple in that if clock is greater than 0, reduce time by 1 second, else, stop the time and show the game over section.
 
 - Quiz Data Pull Based On Click Event
-  I. Quiz Data Summary – check what the `var qCount` is currently at and pull the data from the quizData array.
-  II. Changing of Questions – created a click event under a for loop for the changing of the qcount and and processing the wrong or correct functionality. Given time limitations, I couldn’t improve on this for loop and the last wrong or correct does not display. Had to accept and move on for now, however, I will be returning to this once I have a little more time.
+  a. Quiz Data Summary – check what the `var qCount` is currently at and pull the data from the quizData array.
+
+  b. Changing of Questions – created a click event under a for loop for the changing of the qcount and and processing the wrong or correct functionality. Given time limitations, I couldn’t improve on this for loop and the last wrong or correct does not display. Had to accept and move on for now, however, I will be returning to this once I have a little more time.
 
 - Highscores + Local Storage Section
-  I. Bootcamp todo activity was extremely helpful here. In summary, after user submits score the scores and the initials are pushed into an array called highscoresArray[].
-  II. This section took the most amount of time since the highscoresArray[] would need to be sorted. I was able to overcome this issue by:
-   Pushing user submitted initials + score [time left] Into the highscoresArray[].
-   Sort the values based on the score.
-   Using the turnery operator when appending to the li list.
+  a. Bootcamp todo activity was extremely helpful here. In summary, after user submits score the scores and the initials are pushed into an array called highscoresArray[].
+  b. This section took the most amount of time since the highscoresArray[] would need to be sorted. I was able to overcome this issue by:
+
+  i. Pushing user submitted initials + score [time left] Into the highscoresArray[].
+
+  ii. Sort the values based on the score.
+
+  iii. Using the turnery operator when appending to the li list.
 
 ### Key Learning Points
 
@@ -149,7 +164,7 @@ I probably spent more time on the design than I should have, but at the end, I t
 
 ### Issues With Code To Fix
 
-Given the amount of time for a beginner to learn how to code something like this, I ran out of time when trying to debug the following two issues. Once I have a little more free time, I’ll be working to fix.
+- Given the amount of time for a beginner to learn how to code something like this, I ran out of time when trying to debug the following two issues. Once I have a little more free time, I’ll be working to fix.
 
 [A] The last showWrongCorrect function is not working. I know it has to do with the way I built the logic for the change of questions, but thought I should note.
 
