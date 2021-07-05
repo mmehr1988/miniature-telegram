@@ -147,7 +147,7 @@ I probably spent more time on the design than I should have, but at the end, I t
 - Quiz Data Pull Based On Click Event
   a. Quiz Data Summary – check what the `var qCount` is currently at and pull the data from the quizData array.
 
-  b. Changing of Questions – created a click event under a for loop for the changing of the qcount and and processing the wrong or correct functionality.
+  b. Changing of Questions – created a click event under a "for loop" for the changing of the qcount and and processing the wrong or correct functionality.
 
 - Highscores + Local Storage Section
   a. Bootcamp todo activity was extremely helpful here. In summary, after user submits score the scores and the initials are pushed into an array called highscoresArray[].
@@ -155,15 +155,22 @@ I probably spent more time on the design than I should have, but at the end, I t
 
   i. Pushing user submitted initials + score [time left] Into the highscoresArray[].
 
+  - If user tries to submit empty initials, a prompt will appear notifying user that empty initials is not allowed
+
   ii. Sort the values based on the score.
 
   iii. Using the turnery operator when appending to the li list.
+
+- High Score Nav Button
+  a. Wanted to note that the highscores nav button will only work so long as there are highscores available for user to view. If there are no highscores available, an alert will appear notifying user that no highscores are available.
 
 ### Key Learning Points
 
 [A] GoogleDev BreakPoints For Logic Check – I think the biggest learning was done when utilizing the breakpoints event watcher. There were many instances where I could not understand what the issue was and had to just go step by step over each function to check the values. A great example was for the sorting of the high scores and converting the li creations from appearing as objects on the screen to the values the user submitted.
 
 [B] Reload Function & localStorage.clear() – Each assignment I come across a simple way of doing something that might at first feel like it requires more work. For this assignment, the two I found were the reload page function for the “Go Back” button and the localStorage.clear() to clear the high scores list.
+
+[C] High Score Nav Button Functionality - Understanding how to create a check to see if localstorage has any data for the prompt message when highscores list is empty.
 
 # Image Of Final Assignment
 
