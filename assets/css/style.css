@@ -58,7 +58,6 @@ h1 {
 }
 
 h2 {
-  padding: 0.5rem;
   text-align: center;
   font-size: 180%;
 }
@@ -77,6 +76,12 @@ h2 {
   margin: 0;
 }
 
+section {
+  display: flex;
+  flex-wrap: wrap;
+  width: 600px;
+}
+
 /* -------------------------------------------------------------------------------------- */
 /* BUTTONS */
 /* -------------------------------------------------------------------------------------- */
@@ -89,25 +94,32 @@ button {
   font-family: inherit;
   padding: 1.3rem;
   border-radius: 5px;
+  margin: 5px 0;
 }
 
 button:focus {
   outline: none;
 }
 
-/* INTRO BUTTONS ------------------------------------------------*/
-.intro-container button {
-  width: 100%;
+/* BUTTON | START QUIZ ------------------------------------------------*/
+
+.section-intro button {
   background-color: var(--btn-start-background);
   border: var(--btn-start-border);
   box-shadow: var(--btn-start-shadow);
 }
 
-.intro-container button:hover {
+.section-intro button:hover {
   background-color: var(--btn-start-hover);
 }
 
-/* REMAINING BUTTONS ---------------------------------------------*/
+.section-intro button,
+.section-questions button,
+.section-highscore button {
+  width: 100%;
+}
+
+/* BUTTON | ALL OTHER BUTTONS ---------------------------------------------*/
 
 .nav button,
 .section-questions button,
@@ -125,20 +137,6 @@ button:focus {
 .section-initials button:hover,
 .section-gameover button:hover {
   background-color: var(--btn-nav-hover);
-}
-
-.section-questions button,
-.section-highscore button {
-  width: 100%;
-  margin: 0.7rem 0;
-}
-
-.section-questions button {
-  text-align: left;
-}
-
-.section-highscore button {
-  text-align: center;
 }
 
 /* -------------------------------------------------------------------------------------- */
@@ -175,16 +173,29 @@ button:focus {
 }
 
 /* -------------------------------------------------------------------------------------- */
-/* SECTION | INTRO */
+/* SECTION | INTRO
 /* -------------------------------------------------------------------------------------- */
 
 .intro-list ul {
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .intro-list ul li {
   padding: 0.2rem;
   font-size: 120%;
+  margin-left: 1rem;
+}
+
+.intro-container button {
+  margin: 0;
+}
+
+/* -------------------------------------------------------------------------------------- */
+/* SECTION | QUESTIONS */
+/* -------------------------------------------------------------------------------------- */
+
+.section-questions button {
+  text-align: left;
 }
 
 /* -------------------------------------------------------------------------------------- */
@@ -224,47 +235,47 @@ input {
 }
 
 /* -------------------------------------------------------------------------------------- */
-/* SECTION | HIGH SCORES */
+/* SECTION | HIGH SCORES + GAME OVER */
 /* -------------------------------------------------------------------------------------- */
 
-.score-container {
+/* SIMILAR STYLING */
+.highscore-container,
+.gameover-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 600px;
+  width: 100%;
 }
 
-.score-container h2 {
+/* HIGH SCORE CONTAINER ------------------------------- */
+
+.highscore-container h2 {
   text-align: left;
   font-size: 240%;
 }
 
-.score-container li {
-  margin-bottom: 10px;
+.highscore-container li {
   font-size: 140%;
   margin-left: 30px;
 }
 
+.highscore-list li {
+  padding: 5px;
+}
+
 .highscore-buttons {
   display: flex;
-  justify-content: flex-start;
 }
 
-.highscore-buttons button {
+.highscore-container button {
+  text-align: center;
   margin-right: 10px;
+  width: fit-content;
   width: -webkit-fit-content;
   width: -moz-fit-content;
-  width: fit-content;
 }
 
-/* -------------------------------------------------------------------------------------- */
-/* SECTION | GAME OVER */
-/* -------------------------------------------------------------------------------------- */
-
-.gameover-container {
-  display: flex;
-  flex-direction: column;
-}
+/* GAME OVER CONTAINER ------------------------------- */
 
 .gameover-container p {
   font-size: 300%;
@@ -275,6 +286,7 @@ input {
 /* SECTION | CHECK ANSWER */
 /* -------------------------------------------------------------------------------------- */
 
-.answerCheck {
-  display: flex;
+.wrong-correct {
+  padding: 5px;
+  font-size: 110%;
 }
