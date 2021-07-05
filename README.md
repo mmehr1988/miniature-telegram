@@ -109,12 +109,17 @@ I probably spent more time on the design than I should have, but at the end, I t
 [A] HTML Structure
 
 1. Header
+
    a. `<header>`
+
    b. `<nav>`
+
    i. `<button>` - For the highscore click events in js
+
    ii. `<p>` & `<span>` - For the clock/timer
 
 2. Main Body Section
+
    a. `<section>` - 5 sections used to separate
    i. Intro
    ii. Questions
