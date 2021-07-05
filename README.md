@@ -114,18 +114,18 @@ I probably spent more time on the design than I should have, but at the end, I t
 
    b. `<nav>`
 
-   i. `<button>` - For the highscore click events in js
-
-   ii. `<p>` & `<span>` - For the clock/timer
+   - `<button>` - For the highscore click events in js
+   - `<p>` & `<span>` - For the clock/timer
 
 2. Main Body Section
 
    a. `<section>` - 5 sections used to separate
-   i. Intro
-   ii. Questions
-   iii. Initials
-   iv. Highscores
-   v. Game Over
+
+   - Intro
+   - Questions
+   - Initials
+   - Highscores
+   - Game Over
 
 [B] Javascript Structure
 
@@ -142,6 +142,7 @@ I probably spent more time on the design than I should have, but at the end, I t
 2. Logic of Code
 
 - Start Quiz Button + Click Event
+
   a. Added a click event for the Start Quiz button. This click event also housed the function to:
 
   i. Start the question loading process by calling on the setQuestion() function.
@@ -151,11 +152,15 @@ I probably spent more time on the design than I should have, but at the end, I t
   iii. Load highscores from local storage by calling on `init()`. The purpose of this `init()` is to load the highscores since my “Go Back” button utilizes the javascript `location.reload()`.
 
 - The Timer / Clock functionality is placed under a function called countdown().
+
   a. If timer is greater than 0 and if qcount is less than the quizData length, then continue to reduce timer by 1 sec.
+
   b. If timer is greater than 0 and if qcount is equal to quizData length, stop timer then switch to section Initials and allow user to submit score for highscore list based on score = time left.
+
   c. Else, show game over section & change timer to = 0
 
 - Quiz Data Pull Based On Click Event
+
   a. Quiz Data Summary – check what the `var qCount` is currently at and pull the data from the quizData array.
 
   b. Changing of Questions – created a click event under a "for loop" for the changing of the qcount and and processing the wrong or correct functionality.
