@@ -159,7 +159,7 @@ btnSubmit.addEventListener('click', () => {
   var initialsText = initialsInput.value.trim();
 
   if (initialsText === '') {
-    return '';
+    alert('🚫 Cannot submit empty initials');
   } else {
     highscoresArray.push({
       initialsText: initialsText,
@@ -189,7 +189,9 @@ btnSubmit.addEventListener('click', () => {
 
 // HIGH SCORE BUTTON | CLICK EVENT
 btnHighscore.addEventListener('click', () => {
-  if (secHighscores.classList.contains('hidden')) {
+  if (localStorage.highscoresArray === undefined) {
+    alert('🚫 No Highscores Available');
+  } else {
     secIntro.classList.add('hidden');
     secQuestion.classList.add('hidden');
     secInitials.classList.add('hidden');
