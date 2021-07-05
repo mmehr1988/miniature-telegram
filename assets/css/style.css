@@ -64,6 +64,20 @@ h2 {
 }
 
 /* -------------------------------------------------------------------------------------- */
+/* MASTER CONTAINER */
+/* -------------------------------------------------------------------------------------- */
+
+.master-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+/* -------------------------------------------------------------------------------------- */
 /* BUTTONS */
 /* -------------------------------------------------------------------------------------- */
 
@@ -164,15 +178,6 @@ button:focus {
 /* SECTION | INTRO */
 /* -------------------------------------------------------------------------------------- */
 
-.master-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
-}
-
 .intro-list ul {
   padding: 2rem;
 }
@@ -264,4 +269,12 @@ input {
 .gameover-container p {
   font-size: 300%;
   text-transform: uppercase;
+}
+
+/* -------------------------------------------------------------------------------------- */
+/* SECTION | CHECK ANSWER */
+/* -------------------------------------------------------------------------------------- */
+
+.answerCheck {
+  display: flex;
 }

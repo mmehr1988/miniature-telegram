@@ -59,13 +59,21 @@ btnStartQuiz.addEventListener('click', () => {
 //-------------------------------------------------------
 
 function countdown() {
-  if (cTime > 0) {
+  if (cTime > 0 && qCount < quizData.length) {
     cTime--;
     navTime.textContent = cTime;
+  } else if (cTime > 0 && qCount === quizData.length) {
+    clearInterval(timeTicker);
+    secQuestion.classList.add('hidden');
+    secInitials.classList.remove('hidden');
+    navTime.textContent = cTime;
+    score = cTime;
+    finalScore.textContent = score;
   } else {
     clearInterval(timeTicker);
     secQuestion.classList.add('hidden');
     secGameOver.classList.remove('hidden');
+    navTime.textContent = 0;
   }
 }
 
@@ -87,13 +95,13 @@ function setQuestion(id) {
 let showWrongCorrect = () => {
   setTimeout(function () {
     wrongCorrect.innerHTML = '';
-  }, 1000);
+  }, 2000);
 };
 
 // listens to each click of the answer buttons and questions change accordingly
 for (let i = 0; i < btnAnswer.length; i++) {
   btnAnswer[i].addEventListener('click', () => {
-    if (qCount < quizData.length - 1) {
+    if (qCount < quizData.length) {
       if (quizData[qCount].correct === btnAnswer[i].value) {
         wrongCorrect.innerHTML = 'Correct';
         showWrongCorrect();
@@ -106,13 +114,6 @@ for (let i = 0; i < btnAnswer.length; i++) {
         qCount++;
         setQuestion(qCount);
       }
-    } else {
-      clearInterval(timeTicker);
-      secQuestion.classList.add('hidden');
-      secInitials.classList.remove('hidden');
-      navTime.textContent = cTime;
-      score = cTime;
-      finalScore.textContent = score;
     }
   });
 }

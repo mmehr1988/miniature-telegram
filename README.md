@@ -139,12 +139,15 @@ I probably spent more time on the design than I should have, but at the end, I t
 
   iii. Load highscores from local storage by calling on `init()`. The purpose of this `init()` is to load the highscores since my “Go Back” button utilizes the javascript `location.reload()`.
 
-- The Timer / Clock functionality is a function called countdown(). It’s simple in that if clock is greater than 0, reduce time by 1 second, else, stop the time and show the game over section.
+- The Timer / Clock functionality is placed under a function called countdown().
+  a. If timer is greater than 0 and if qcount is less than the quizData length, then continue to reduce timer by 1 sec.
+  b. If timer is greater than 0 and if qcount is equal to quizData length, stop timer then switch to section Initials and allow user to submit score for highscore list based on score = time left.
+  c. Else, show game over section & change timer to = 0
 
 - Quiz Data Pull Based On Click Event
   a. Quiz Data Summary – check what the `var qCount` is currently at and pull the data from the quizData array.
 
-  b. Changing of Questions – created a click event under a for loop for the changing of the qcount and and processing the wrong or correct functionality. Given time limitations, I couldn’t improve on this for loop and the last wrong or correct does not display. Had to accept and move on for now, however, I will be returning to this once I have a little more time.
+  b. Changing of Questions – created a click event under a for loop for the changing of the qcount and and processing the wrong or correct functionality.
 
 - Highscores + Local Storage Section
   a. Bootcamp todo activity was extremely helpful here. In summary, after user submits score the scores and the initials are pushed into an array called highscoresArray[].
@@ -161,14 +164,6 @@ I probably spent more time on the design than I should have, but at the end, I t
 [A] GoogleDev BreakPoints For Logic Check – I think the biggest learning was done when utilizing the breakpoints event watcher. There were many instances where I could not understand what the issue was and had to just go step by step over each function to check the values. A great example was for the sorting of the high scores and converting the li creations from appearing as objects on the screen to the values the user submitted.
 
 [B] Reload Function & localStorage.clear() – Each assignment I come across a simple way of doing something that might at first feel like it requires more work. For this assignment, the two I found were the reload page function for the “Go Back” button and the localStorage.clear() to clear the high scores list.
-
-### Issues With Code To Fix
-
-- Given the amount of time for a beginner to learn how to code something like this, I ran out of time when trying to debug the following two issues. Once I have a little more free time, I’ll be working to fix.
-
-[A] The last showWrongCorrect function is not working. I know it has to do with the way I built the logic for the change of questions, but thought I should note.
-
-[B] When click at high speed and the answers are sequentially wrong, there are instances where user score will be negative. This is a bug that I’ll need to work on.
 
 # Image Of Final Assignment
 
