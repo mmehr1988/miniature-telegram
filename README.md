@@ -34,11 +34,17 @@ Upon loading the code quiz app:
 
 1. When start button is clicked, user is presented with a question
 2. For each answer:
+
    a. If correct, user is presented with another question.
+
    b. If incorrect, time is subtracted from the clock
+
 3. The game is over when:
+
    a. User answers all questions.
+
    b. Time reaches 0.
+
 4. Once game is over, user can submit initials for high score list submission.
 
 ## Structure + Process of Writing Code
@@ -150,7 +156,9 @@ I probably spent more time on the design than I should have, but at the end, I t
   b. Changing of Questions – created a click event under a "for loop" for the changing of the qcount and and processing the wrong or correct functionality.
 
 - Highscores + Local Storage Section
+
   a. Bootcamp todo activity was extremely helpful here. In summary, after user submits score the scores and the initials are pushed into an array called highscoresArray[].
+
   b. This section took the most amount of time since the highscoresArray[] would need to be sorted. I was able to overcome this issue by:
 
   i. Pushing user submitted initials + score [time left] Into the highscoresArray[].
@@ -162,6 +170,7 @@ I probably spent more time on the design than I should have, but at the end, I t
   iii. Using the turnery operator when appending to the li list.
 
 - High Score Nav Button
+
   a. Wanted to note that the highscores nav button will only work so long as there are highscores available for user to view. If there are no highscores available, an alert will appear notifying user that no highscores are available.
 
 ### Key Learning Points
