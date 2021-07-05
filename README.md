@@ -145,11 +145,11 @@ I probably spent more time on the design than I should have, but at the end, I t
 
   a. Added a click event for the Start Quiz button. This click event also housed the function to:
 
-  i. Start the question loading process by calling on the setQuestion() function.
+  - Start the question loading process by calling on the setQuestion() function.
 
-  ii. Start the countdown by calling on countdown() which reduces the initial 75secs clock by 1 second.
+  - Start the countdown by calling on countdown() which reduces the initial 75secs clock by 1 second.
 
-  iii. Load highscores from local storage by calling on `init()`. The purpose of this `init()` is to load the highscores since my “Go Back” button utilizes the javascript `location.reload()`.
+  - Load highscores from local storage by calling on `init()`. The purpose of this `init()` is to load the highscores since my “Go Back” button utilizes the javascript `location.reload()`.
 
 - The Timer / Clock functionality is placed under a function called countdown().
 
@@ -171,13 +171,11 @@ I probably spent more time on the design than I should have, but at the end, I t
 
   b. This section took the most amount of time since the highscoresArray[] would need to be sorted. I was able to overcome this issue by:
 
-  i. Pushing user submitted initials + score [time left] Into the highscoresArray[].
+  - Pushing user submitted initials + score [time left] Into the highscoresArray[]. If user tries to submit empty initials, a prompt will appear notifying user that empty initials is not allowed
 
-  - If user tries to submit empty initials, a prompt will appear notifying user that empty initials is not allowed
+  - Sort the values based on the score.
 
-  ii. Sort the values based on the score.
-
-  iii. Using the turnery operator when appending to the li list.
+  - Using the turnery operator when appending to the li list.
 
 - High Score Nav Button
 
