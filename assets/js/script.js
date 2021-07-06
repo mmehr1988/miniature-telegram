@@ -1,12 +1,16 @@
 'use strict';
 
 // -------------------------------------------------------
-// GAME SETTINGS
+// VARIABLES: GAME RELOAD
 // -------------------------------------------------------
 
 var cTime = 75;
 var qCount = 0;
 var score = 0;
+
+// -------------------------------------------------------
+// VARIABLES: HTML
+// -------------------------------------------------------
 
 // Function to make writing variables a little cleaner
 var queryElement = (element) => {
@@ -23,7 +27,6 @@ var btnHighscore = queryElement('.nav-highscore');
 var secQuestion = queryElement('.section-questions');
 var questionEl = queryElement('.quizDataQuestion');
 var btnAnswer = document.querySelectorAll('.answer');
-var wrongCorrect = queryElement('.wrong-correct');
 
 // VARIABLES | SECTION = INITIALS
 var secInitials = queryElement('.section-initials');
@@ -40,6 +43,9 @@ var btnGoBack = queryElement('.go-back');
 // VARIABLES | SECTION = GAMEOVER
 var secGameOver = queryElement('.section-gameover');
 var btnGameOver = queryElement('.game-over');
+
+// VARIABLE | SECTION = ANSWER CHECK
+var wrongCorrect = queryElement('.wrong-correct');
 
 // -------------------------------------------------------
 // TO START QUIZ
