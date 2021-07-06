@@ -79,6 +79,7 @@ h2 {
 section {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   width: 600px;
 }
 
@@ -194,6 +195,10 @@ button:focus {
 /* SECTION | QUESTIONS */
 /* -------------------------------------------------------------------------------------- */
 
+.section-questions h2 {
+  margin-bottom: 10px;
+}
+
 .section-questions button {
   text-align: left;
 }
@@ -286,7 +291,10 @@ input {
 /* SECTION | CHECK ANSWER */
 /* -------------------------------------------------------------------------------------- */
 
+.answerCheck {
+  justify-content: flex-start;
+}
+
 .wrong-correct {
-  padding: 5px;
   font-size: 110%;
 }

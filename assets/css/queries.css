@@ -1,0 +1,28 @@
+@media only screen and (max-width: 767px) {
+  html,
+  body {
+    font-size: 12px;
+  }
+
+  section {
+    width: 500px;
+  }
+
+  .section-intro button {
+    margin-left: 2rem;
+  }
+
+  .section-intro button,
+  .section-questions button,
+  .quizDataQuestion {
+    width: 90%;
+  }
+
+  .intro-list ul {
+    padding: 4rem;
+  }
+
+  .answerCheck {
+    margin-left: 5rem;
+  }
+}
