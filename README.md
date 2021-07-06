@@ -219,9 +219,9 @@ a. `var queryElement` - To get in the habit of writing clean and easier to read 
 
 a. Under the `btnSubmit.addEventListener()`
 
-> Push user submitted initials + score into the highscoresArray[].
+- Push user submitted initials + score into the highscoresArray[].
 
-> Sort the values based on the score.
+- Sort the values based on the score.
 
 b. Under `function renderHighscores()`
 
