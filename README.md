@@ -4,6 +4,8 @@ Assignment: Code Quiz
 
 Developer: Mehdi Mehrabani
 
+App Link: [Code Quiz](https://mmehr1988.github.io/miniature-telegram/)
+
 For this week, we were tasked with building a timed coding quiz app with multiple-choice questions. In the week prior, our focus was on Web APIs and as a result, learning about this topic became extremely important in the success of building this app.
 
 To be honest, I had no idea what Web API’s were until this assignment. The term API seems to be used all the time, and unless you are utilizing them for your own personal projects it's hard to understand the usefulness. For this reason, I had to brush up on the learning done during class before attempting this assignment.
