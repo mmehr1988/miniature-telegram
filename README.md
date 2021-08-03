@@ -243,6 +243,6 @@ b. Under `function renderHighscores()`
 
 [C] High Score Nav Button Functionality - Understanding how to create a check to see if localstorage has any data for the prompt message when highscores list is empty.
 
-# Image Of Final Assignment
+# GIF Of Final Assignment
 
-![alt text](./assets/img/miniature-telegram.png)
+![alt text](./assets/gif/Code-Quiz.gif)
